@@ -2,12 +2,10 @@ package com.example.reviewapp.features.welcome.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.reviewapp.features.welcome.vm.MainViewModel
 import com.example.reviewapp.R
 import com.example.reviewapp.base.BaseActivity
 import com.example.reviewapp.databinding.MainActivityBinding
+import com.example.reviewapp.features.welcome.vm.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
