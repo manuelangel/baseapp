@@ -2,16 +2,12 @@ package com.example.reviewapp.features.welcome.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.reviewapp.features.welcome.vm.MainViewModel
 import com.example.reviewapp.R
 import com.example.reviewapp.base.BaseFragment
 import com.example.reviewapp.databinding.MainFragmentBinding
+import com.example.reviewapp.features.welcome.vm.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
