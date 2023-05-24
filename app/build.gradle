@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'io.realm.kotlin'
 }
 
 android {
@@ -77,6 +78,8 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.14.0'
+
+    implementation 'io.realm.kotlin:library-base:1.8.0'
 }
 
 kapt {

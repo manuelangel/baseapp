@@ -50,6 +50,6 @@ class MainFragment: BaseFragment<MainFragmentBinding>() {
     }
 
     private fun setListeners() {
-        databinding.mainFragmentCta.setOnClickListener { viewModel.loadPhotos() }
+        databinding.mainFragmentCta.setOnClickListener { viewModel.loadFavoritePhotos() }
     }
 }
