@@ -1,8 +1,8 @@
 package com.example.reviewapp.di
 
-import com.example.reviewapp.data.TestRepository
-import com.example.reviewapp.data.datasource.TestDatasource
-import com.example.reviewapp.data.impl.TestRepositoryImpl
+import com.example.reviewapp.data.PhotoRepository
+import com.example.reviewapp.data.datasource.PhotoNetworkDatasource
+import com.example.reviewapp.data.impl.PhotoRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModule {
 
     @Provides
-    fun getTestRepository(testDatasource: TestDatasource): TestRepository {
-        return TestRepositoryImpl(testDatasource)
+    fun getTestRepository(photoNetworkDatasource: PhotoNetworkDatasource): PhotoRepository {
+        return PhotoRepositoryImpl(photoNetworkDatasource)
     }
 }

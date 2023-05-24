@@ -1,5 +1,6 @@
-package com.example.reviewapp.data.datasource.api
+package com.example.reviewapp.base
 
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.security.SecureRandom
@@ -50,7 +51,12 @@ object UnsafeOkHttpClient {
                 sslSocketFactory,
                 trustAllCerts[0] as X509TrustManager
             )
-            builder.hostnameVerifier(HostnameVerifier { hostname, session -> true })
+            builder.hostnameVerifier(HostnameVerifier { hostname, session ->
+                when(hostname){
+                    "jsonplaceholder.typicode.com" -> true
+                    else -> false
+                }
+            })
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             builder.addInterceptor(interceptor)

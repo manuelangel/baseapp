@@ -1,7 +1,6 @@
 package com.example.reviewapp.data.datasource.api
 
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.example.reviewapp.base.UnsafeOkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

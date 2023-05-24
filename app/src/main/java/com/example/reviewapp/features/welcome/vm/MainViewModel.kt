@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.reviewapp.domain.Photo
-import com.example.reviewapp.features.welcome.usecase.GetListUseCase
+import com.example.reviewapp.features.welcome.usecase.GetPhotosUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val useCase: GetListUseCase):ViewModel() {
+class MainViewModel @Inject constructor(private val useCase: GetPhotosUseCase):ViewModel() {
     var text : String = ""
 
     private val testMutableLiveData:MutableLiveData<List<Photo>> = MutableLiveData()
