@@ -18,8 +18,6 @@ class MainActivity : BaseActivity<MainActivityBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.text = "Activity"
-
         supportFragmentManager.beginTransaction().replace(
             R.id.main_activity_fragment_container,
             MainFragment()

@@ -12,17 +12,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val useCase: GetPhotosUseCase):ViewModel() {
-    var text : String = ""
 
-    private val testMutableLiveData:MutableLiveData<List<Photo>> = MutableLiveData()
-    val testLiveData:LiveData<List<Photo>> get() = testMutableLiveData
+    private val photosMutableLiveData:MutableLiveData<Result<List<Photo>>> = MutableLiveData()
+    val photosLiveData:LiveData<Result<List<Photo>>> get() = photosMutableLiveData
     private val loadingStateMutableLiveData:MutableLiveData<Boolean> = MutableLiveData(false)
     val loadingStateLiveData:LiveData<Boolean> get() = loadingStateMutableLiveData
 
-    fun test() {
+    fun loadPhotos() {
         viewModelScope.launch {
             changeToLoadingState()
-            useCase.execute().getOrNull()?.let { testMutableLiveData.value = it }
+            useCase.execute().let { photosMutableLiveData.value = it }
             changeToNonLoadingState()
         }
     }

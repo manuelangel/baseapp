@@ -1,6 +1,5 @@
 package com.example.reviewapp.base
 
-import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.security.SecureRandom
@@ -13,8 +12,11 @@ import javax.net.ssl.X509TrustManager
 import javax.security.cert.CertificateException
 
 
-object UnsafeOkHttpClient {
-    fun getUnsafeOkHttpClient(): OkHttpClient? {
+object OkHttpClientGenerator {
+
+    val NETWORK_DATABASE_HOSTNAME = "jsonplaceholder.typicode.com"
+    val NETWORK_IMAGE_HOSTNAME = "via.placeholder.com"
+    fun getBaseOkHttpClient(): OkHttpClient? {
         return try {
             // Create a trust manager that does not validate certificate chains
             val trustAllCerts =
@@ -51,12 +53,13 @@ object UnsafeOkHttpClient {
                 sslSocketFactory,
                 trustAllCerts[0] as X509TrustManager
             )
-            builder.hostnameVerifier(HostnameVerifier { hostname, session ->
-                when(hostname){
-                    "jsonplaceholder.typicode.com" -> true
+            builder.hostnameVerifier { hostname, _ ->
+                when (hostname) {
+                    NETWORK_DATABASE_HOSTNAME -> true
+                    NETWORK_IMAGE_HOSTNAME -> true
                     else -> false
                 }
-            })
+            }
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             builder.addInterceptor(interceptor)

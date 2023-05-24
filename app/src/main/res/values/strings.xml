@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ReviewApp</string>
+    <string name="generic_error_message">Something went wrong. Please retry.</string>
+    <string name="generic_alert_close_button">Ok</string>
 </resources>

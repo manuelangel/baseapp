@@ -1,6 +1,6 @@
 package com.example.reviewapp.data.datasource.api
 
-import com.example.reviewapp.base.UnsafeOkHttpClient
+import com.example.reviewapp.base.OkHttpClientGenerator
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,11 +18,11 @@ class RetrofitClient private constructor() {
             return instance
         }
     }
-    private val BASE_URL = "https://jsonplaceholder.typicode.com"
+    private val BASE_URL = "https://${OkHttpClientGenerator.NETWORK_DATABASE_HOSTNAME}"
     private var myApi: PhotosApi
 
     init {
-        val client = UnsafeOkHttpClient.getUnsafeOkHttpClient()
+        val client = OkHttpClientGenerator.getBaseOkHttpClient()
         val retrofit: Retrofit = Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)

@@ -11,10 +11,10 @@ import java.io.InputStream
 
 
 @GlideModule
-class UnSafeGlideModule:AppGlideModule() {
+class BaseGlideModule:AppGlideModule() {
 
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
-        val okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient()
+        val okHttpClient = OkHttpClientGenerator.getBaseOkHttpClient()
         okHttpClient?.let {
             registry.replace(GlideUrl::class.java, InputStream::class.java, OkHttpUrlLoader.Factory(okHttpClient))
         }

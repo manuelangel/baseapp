@@ -9,8 +9,14 @@ abstract class BaseRvAdapter<K,T:BaseViewHolder<K>>:Adapter<T>() {
     override fun getItemCount() = items.size
 
     fun addItems(newItems:List<K>){
+        val startingIndex = items.size
+        items.addAll(newItems)
+        notifyItemRangeChanged(startingIndex,newItems.size)
+    }
+
+    fun setItems(newItems:List<K>){
+        items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
     }
-
 }

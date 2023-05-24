@@ -9,4 +9,5 @@ class GetPhotosUseCase @Inject constructor(private val repository:PhotoRepositor
     suspend fun execute():Result<List<Photo>>{
         return repository.test()
     }
+
 }

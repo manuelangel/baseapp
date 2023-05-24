@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModule {
 
     @Provides
-    fun getTestRepository(photoNetworkDatasource: PhotoNetworkDatasource): PhotoRepository {
+    fun providePhotosRepository(photoNetworkDatasource: PhotoNetworkDatasource): PhotoRepository {
         return PhotoRepositoryImpl(photoNetworkDatasource)
     }
 }

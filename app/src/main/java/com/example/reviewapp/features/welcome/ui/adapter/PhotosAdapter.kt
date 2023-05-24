@@ -10,9 +10,10 @@ import com.example.reviewapp.features.welcome.ui.adapter.vh.PhotoViewHolder
 class PhotosAdapter: BaseRvAdapter<Photo,PhotoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
-        return ItemPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false).run {
-            PhotoViewHolder(this)
-        }
+        return ItemPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            .run {
+                PhotoViewHolder(this)
+            }
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {

@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 object DatasourceModule {
 
     @Provides
-    fun getTestDatasource(): PhotoNetworkDatasource {
+    fun providePhotosDatasource(): PhotoNetworkDatasource {
         return PhotoNetworkDatasourceImpl()
     }
 }

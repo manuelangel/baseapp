@@ -1,18 +1,17 @@
 package com.example.reviewapp.features.welcome.ui
 
+import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
-import android.util.SparseIntArray
 import android.view.View
-import androidx.core.util.contains
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import com.example.reviewapp.R
 import com.example.reviewapp.base.BaseFragment
-import com.example.reviewapp.base.loadUrlImage
 import com.example.reviewapp.databinding.MainFragmentBinding
 import com.example.reviewapp.features.welcome.ui.adapter.PhotosAdapter
 import com.example.reviewapp.features.welcome.vm.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainFragment: BaseFragment<MainFragmentBinding>() {
@@ -25,9 +24,6 @@ class MainFragment: BaseFragment<MainFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        databinding.imagen.loadUrlImage("https://picsum.photos/200")
-        databinding.mainFragmentHeaderTv.text = viewModel.text
         setObservers()
         setListeners()
         initRv()
@@ -39,9 +35,13 @@ class MainFragment: BaseFragment<MainFragmentBinding>() {
 
     private fun setObservers() {
 
-        viewModel.testLiveData.observe(viewLifecycleOwner){
-            databinding.mainFragmentHeaderTv.text = "Son ${it.size}"
-            adapter.addItems(it)
+        viewModel.photosLiveData.observe(viewLifecycleOwner){
+            if(it.isSuccess){
+                adapter.setItems(it.getOrDefault(ArrayList()))
+            }
+            else{
+                showAlertDialog(getString(R.string.generic_error_message),getString(R.string.generic_alert_close_button), { _, _ ->  })
+            }
         }
 
         viewModel.loadingStateLiveData.observe(viewLifecycleOwner){
@@ -50,6 +50,6 @@ class MainFragment: BaseFragment<MainFragmentBinding>() {
     }
 
     private fun setListeners() {
-        databinding.mainFragmentCta.setOnClickListener { viewModel.test() }
+        databinding.mainFragmentCta.setOnClickListener { viewModel.loadPhotos() }
     }
 }
