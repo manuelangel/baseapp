@@ -1,5 +1,6 @@
 package com.example.reviewapp.base
 
+import android.util.SparseIntArray
 import androidx.recyclerview.widget.RecyclerView.Adapter
 
 abstract class BaseRvAdapter<K,T:BaseViewHolder<K>>:Adapter<T>() {
@@ -19,4 +20,5 @@ abstract class BaseRvAdapter<K,T:BaseViewHolder<K>>:Adapter<T>() {
         items.addAll(newItems)
         notifyDataSetChanged()
     }
+
 }

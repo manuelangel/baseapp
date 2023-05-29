@@ -34,22 +34,21 @@ class MainFragment: BaseFragment<MainFragmentBinding>() {
     }
 
     private fun setObservers() {
-
+        viewModel.favoritePhotosLiveData.observe(viewLifecycleOwner){
+            adapter.setFavorites(it)
+        }
         viewModel.photosLiveData.observe(viewLifecycleOwner){
-            if(it.isSuccess){
-                adapter.setItems(it.getOrDefault(ArrayList()))
-            }
-            else{
-                showAlertDialog(getString(R.string.generic_error_message),getString(R.string.generic_alert_close_button), { _, _ ->  })
-            }
+            adapter.setItems(it)
+                //showAlertDialog(getString(R.string.generic_error_message),getString(R.string.generic_alert_close_button), { _, _ ->  })
         }
 
         viewModel.loadingStateLiveData.observe(viewLifecycleOwner){
             databinding.mainFragmentProgress.visibility = if (it) View.VISIBLE else View.GONE
         }
+
     }
 
     private fun setListeners() {
-        databinding.mainFragmentCta.setOnClickListener { viewModel.loadFavoritePhotos() }
+        databinding.mainFragmentCta.setOnClickListener { viewModel.loadPhotos() }
     }
 }

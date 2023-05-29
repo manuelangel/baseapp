@@ -9,9 +9,6 @@ import javax.inject.Inject
 class GetFavoritePhotosUseCase @Inject constructor(private val repository: PhotoRepository) {
 
     suspend fun execute():Result<List<Photo>>{
-        return withContext(Dispatchers.Main){
-            repository.storeFavoritePhoto(Photo(1,"siii mama",""))
-            return@withContext repository.loadFavoritePhotos()
-        }
+            return repository.loadFavoritePhotos()
     }
 }

@@ -1,4 +1,12 @@
 package com.example.reviewapp.features.welcome.usecase
 
-class StoreFavoritePhotoUseCase {
+import com.example.reviewapp.data.PhotoRepository
+import com.example.reviewapp.domain.Photo
+import javax.inject.Inject
+
+class StoreFavoritePhotoUseCase @Inject constructor(private val repository: PhotoRepository) {
+
+    suspend fun execute(photo:Photo):Result<Boolean>{
+        return repository.storeFavoritePhoto(photo)
+    }
 }

@@ -22,12 +22,31 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
+            android:text="@{photo.title}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_photo_fav_state_image"
             app:layout_constraintStart_toEndOf="@id/item_photo_image"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_photo_fav_state_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@{isFavorite?@drawable/ic_fav_full:@drawable/ic_fav_empty}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <data>
+        <variable
+            name="isFavorite"
+            type="Boolean" />
+
+        <variable
+            name="photo"
+            type="com.example.reviewapp.features.welcome.ui.model.PhotoUI" />
+    </data>
 </layout>
