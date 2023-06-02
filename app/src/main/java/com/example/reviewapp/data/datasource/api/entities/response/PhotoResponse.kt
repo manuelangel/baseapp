@@ -1,4 +1,4 @@
-package com.example.reviewapp.data.datasource.entities.response
+package com.example.reviewapp.data.datasource.api.entities.response
 
 import com.google.gson.annotations.SerializedName
 

@@ -14,11 +14,9 @@ class PhotosAdapter: BaseRvAdapter<PhotoUI,PhotoViewHolder>() {
 
     var listener : Listener? = null
 
-    var favoriteItems:SparseIntArray? = null
-
     private val viewHolderListener = object :PhotoViewHolder.Listener{
-        override fun favoriteButtonClicked(photo: Photo, isFavorite: Boolean) {
-            listener?.onFavoriteStateChange(photo,isFavorite)
+        override fun favoriteButtonClicked(photo: PhotoUI) {
+            listener?.onFavoriteStateChange(photo)
         }
     }
 
@@ -35,11 +33,7 @@ class PhotosAdapter: BaseRvAdapter<PhotoUI,PhotoViewHolder>() {
         holder.bind(items[position])
     }
 
-    fun setFavorites(favorites: SparseIntArray?){
-        favoriteItems = favorites
-    }
-
     interface Listener{
-        fun onFavoriteStateChange(photo: Photo, isFavorite: Boolean)
+        fun onFavoriteStateChange(photo: PhotoUI)
     }
 }

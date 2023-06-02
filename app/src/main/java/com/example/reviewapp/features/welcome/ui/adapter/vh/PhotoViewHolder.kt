@@ -13,12 +13,12 @@ class PhotoViewHolder(private val dataBinding: ItemPhotoBinding) : BaseViewHolde
 
     init {
         dataBinding.apply {
-            itemPhotoFavStateImage.setOnClickListener {
+            itemPhotoFavStateImage.setOnClickListener { _ ->
                 val photoSelected = photo
-                val isFavoriteState = isFavorite
-                if(isFavoriteState !=null && photoSelected != null) {
-                    isFavorite = !isFavoriteState
-                    /*this@PhotoViewHolder.listener?.favoriteButtonClicked(dataBinding.photo, dataBinding.isFavorite)*/
+                photoSelected?.let {
+                    it.isFavorite = !it.isFavorite
+                    this@PhotoViewHolder.listener?.favoriteButtonClicked(it)
+                    photo = it
                 }
             }
         }
@@ -28,11 +28,10 @@ class PhotoViewHolder(private val dataBinding: ItemPhotoBinding) : BaseViewHolde
         dataBinding.itemPhotoImage.loadUrlImage(item.imageUrl)
         dataBinding.itemPhotoText.text = item.title
         dataBinding.photo = item
-        dataBinding.isFavorite = false
     }
 
     interface Listener{
-        fun favoriteButtonClicked(photo:Photo,isFavorite:Boolean)
+        fun favoriteButtonClicked(photo:PhotoUI)
     }
 
 }

@@ -1,9 +1,7 @@
-package com.example.reviewapp.features.welcome.usecase
+package com.example.reviewapp.usecase
 
-import com.example.reviewapp.data.PhotoRepository
+import com.example.reviewapp.usecase.repository.PhotoRepository
 import com.example.reviewapp.domain.Photo
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetFavoritePhotosUseCase @Inject constructor(private val repository: PhotoRepository) {

@@ -1,6 +1,6 @@
 package com.example.reviewapp.di
 
-import com.example.reviewapp.data.PhotoRepository
+import com.example.reviewapp.usecase.repository.PhotoRepository
 import com.example.reviewapp.data.datasource.PhotoDBDatasource
 import com.example.reviewapp.data.datasource.PhotoNetworkDatasource
 import com.example.reviewapp.data.impl.PhotoRepositoryImpl
