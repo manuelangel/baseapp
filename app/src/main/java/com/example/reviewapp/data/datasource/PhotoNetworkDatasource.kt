@@ -1,7 +1,7 @@
 package com.example.reviewapp.data.datasource
 
-import com.example.reviewapp.data.datasource.entities.response.PhotoResponse
+import com.example.reviewapp.domain.Photo
 
 interface PhotoNetworkDatasource {
-    suspend fun loadPhotos(): Result<List<PhotoResponse>>
+    suspend fun loadPhotos(): Result<List<Photo>>
 }

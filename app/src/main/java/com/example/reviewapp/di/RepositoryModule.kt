@@ -1,6 +1,7 @@
 package com.example.reviewapp.di
 
-import com.example.reviewapp.data.PhotoRepository
+import com.example.reviewapp.usecase.repository.PhotoRepository
+import com.example.reviewapp.data.datasource.PhotoDBDatasource
 import com.example.reviewapp.data.datasource.PhotoNetworkDatasource
 import com.example.reviewapp.data.impl.PhotoRepositoryImpl
 import dagger.Module
@@ -13,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModule {
 
     @Provides
-    fun providePhotosRepository(photoNetworkDatasource: PhotoNetworkDatasource): PhotoRepository {
-        return PhotoRepositoryImpl(photoNetworkDatasource)
+    fun providePhotosRepository(photoNetworkDatasource: PhotoNetworkDatasource,photoDBDatasource: PhotoDBDatasource): PhotoRepository {
+        return PhotoRepositoryImpl(photoNetworkDatasource,photoDBDatasource)
     }
 }
